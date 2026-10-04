@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Spendly — Expense Tracker{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">S</div><div><strong>Spendly</strong><span>Expense Tracker</span></div></div>
+    <nav><a class="active" href="{{ url_for('index') }}">⌂ <span>Dashboard</span></a></nav>
+    <div class="side-note"><b>Stay in control.</b><p>Track spending, understand habits, and plan with confidence.</p></div>
+  </aside>
+  <main class="main">{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flash-wrap">{% for category,message in messages %}<div class="flash {{category}}">{{message}}</div>{% endfor %}</div>{% endif %}{% endwith %}{% block content %}{% endblock %}</main>
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body></html>
